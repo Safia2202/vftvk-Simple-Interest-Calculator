@@ -1,27 +1,17 @@
-/*This function obtains the data of the interest rate selected in the slider by the user
-Input> rate: user rate selecction
-Output>show rate selected
-*/
-function fnRateSelection() {
+
+function ratechoosen() {
   var rateSelected = document.getElementById("rate").value;
-  document.getElementById("interestRateUsed").innerHTML =
+  document.getElementById("RateUsed").innerHTML =
     " " + rateSelected + "%";
 }
 
-/*This function converts the number of years of the calculation to the corresponding year
-Input> years: Time Period involved in years
-Output>exactyear in which the interest calculation ends
-*/
-function fnChangeYearPresentation(years) {
+
+function FutureYear(years) {
   var date = new Date();
   var y = date.getFullYear() + parseInt(years);
   return y;
 }
 
-/*This function shows the sentence with the result of the calculation
-Input> data: data in form of array
-Output> shows the sentence with the result of the calculation
-*/
 function fnShowResult(data) {
   document.getElementById("text1").innerHTML = "If you deposit ";
   document.getElementById("data1").innerHTML = data[0] + ",";
@@ -33,14 +23,6 @@ function fnShowResult(data) {
   document.getElementById("data4").innerHTML = data[3];
 }
 
-/*This function calculate simple interest and shows the calculation
-Input>
-principal: amount of money to invest
-rate: annual rate interest
-years: Time Period involved in years
-Output>
-Amount of interest to received
-*/
 function compute() {
   principal = document.getElementById("principal").value;
   if (principal <= 0) {
@@ -51,7 +33,7 @@ function compute() {
     years = document.getElementById("years-select").value;
     interest = (principal * rate * years) / 100;
 
-    var year = fnChangeYearPresentation(years);
+    var year = FutureYear(years);
 
     var data = [principal, rate, interest, year];
     fnShowResult(data);
